@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 1.1                                                                                                                                                                        
+Version: 1.2
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -25,7 +25,8 @@ Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)
 
 add_action('admin_menu', 'lzcs_add_admin_menu');
 add_action('wp_enqueue_scripts', 'add_jscss');
-add_action('init', 'lzcs_init');
+register_activation_hook(__FILE__, 'lzcs_init');
+register_deactivation_hook(__FILE__, 'lzcs_deactivate');
 
 //set up lzcs plugin
 function add_jscss() {
@@ -62,6 +63,10 @@ function lzcs_init() {
         update_option('lzcs_cat','lzcs');
     }
         add_filter('plugin_row_meta', 'lzcs_Plugin_Links',10,2);
+}
+
+function lzcs_deactivate() {
+    delete_option('lzcs_cat');
 }
 
 function lzcs_admin_menu() {
