@@ -50,7 +50,7 @@ simply upload the zip file within your wordpress installation.
 Go to http://mysqlhow2.com to see it in action
 
 == Frequently Asked Questions ==
-Just want to give shout out to Tim Garrison who helped with my looping and
+Just want to give shout out to Tim Garrison @ http://www.skudd.com who helped with my looping and
 webdeveloperplus with the great tutorial on the slider using jquery.
 
 == Upgrade Notice ==
