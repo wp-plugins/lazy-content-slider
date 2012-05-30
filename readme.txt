@@ -60,4 +60,5 @@ Initial Release
 Added remove option from database when plugin deactivated.
 
 == Changelog ==
-None
+= 1.2 =
+Added remove option from database when plugin deactivated.
