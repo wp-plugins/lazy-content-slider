@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 1.3.2
+Version: 2.1
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -81,7 +81,16 @@ function lzcs_admin_menu() {
     include('lzcs_admin.php');
 }
 
+function string_limit_words($string, $word_limit)
+{
+  $words = explode(' ', $string, ($word_limit + 1));
+  if(count($words) > $word_limit)
+  array_pop($words);
+  return implode(' ', $words);
+}
+
 function drawslider() {
+    global $post;
     echo "<div id=\"featured\" >";
     echo "<ul class=\"ui-tabs-nav\">";
     $posts = get_option('lzcs_cat');
@@ -92,6 +101,7 @@ function drawslider() {
     $displayedPosts = 0;
     
     foreach( $recent_posts as $recent ){
+        setup_postdata($recent);
         $postid = $recent["ID"];
         if (!has_post_thumbnail($postid)) {
                 continue;
@@ -117,6 +127,10 @@ function drawslider() {
             
     foreach( $recent_posts as $recent ){
         $postid = $recent["ID"];
+        $postexcerpt = $recent["post_content"];
+        $postexcerpt = preg_replace ( "'<[^>]+>'U", "", $postexcerpt);
+        $postexcerpt = string_limit_words($postexcerpt,15);
+
         if (!has_post_thumbnail($postid)) {
                 continue;
         }
@@ -129,7 +143,7 @@ function drawslider() {
             <?php echo $largeimage ?>
             <div class="info" >
                     <h2><a href="<?php echo get_permalink($recent["ID"]) ?>" ><?php echo esc_attr($recent["post_title"]); ?></a></h2>
-                    <p><a href="<?php echo get_permalink($recent["ID"]) ?>" >read more</a></p>
+                    <p><?php echo $postexcerpt; ?><a href="<?php echo get_permalink($recent["ID"]) ?>" ><strong> read more</strong></a></p>
             </div>
         </div>
 <?php
@@ -138,4 +152,3 @@ function drawslider() {
     echo '</div>'; // Closing the div#featured
 }
 add_shortcode('lazyslider', 'drawslider');
-
