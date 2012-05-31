@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 2.2
+Version: 2.1
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -89,40 +89,26 @@ function string_limit_words($string, $word_limit)
   return implode(' ', $words);
 }
 
-function getDisplayPosts($limit = 4)
-{
+function drawslider() {
+    global $post;
+    echo "<div id=\"featured\" >";
+    echo "<ul class=\"ui-tabs-nav\">";
     $posts = get_option('lzcs_cat');
     $args = array('category' => $posts );
     $recent_posts = wp_get_recent_posts( $args );
-
-    $output = array();
-    foreach ($recent_posts as $post) {
-        setup_postdata($post);
-        if (has_post_thumbnail($post['ID'])) {
-            $output[] = $post;
-        }
-
-        if (count($output) > $limit) break;
-    }
-
-    return $output;
-}
-
-function drawslider() {
-    global $post;
-    $recent_posts = getDisplayPosts();
-
-    if (count($recent_posts) == 0) {
-        return;
-    }
-
-    echo "<div id=\"featured\" >";
-    echo "<ul class=\"ui-tabs-nav\">";
-
+    
+    $limit = 4;
+    $displayedPosts = 0;
+    
     foreach( $recent_posts as $recent ){
         setup_postdata($recent);
         $postid = $recent["ID"];
-
+        if (!has_post_thumbnail($postid)) {
+                continue;
+        }
+        
+        if (++$displayedPosts > $limit) break;
+        
         $thumbnail =  get_the_post_thumbnail( $postid, array(50, 50) );
         
 ?>
@@ -137,13 +123,20 @@ function drawslider() {
 
     echo '</ul>';   // Closing the div.ui-tabs-nav
     
-
+    $displayedPosts = 0;
+            
     foreach( $recent_posts as $recent ){
         $postid = $recent["ID"];
         $postexcerpt = $recent["post_content"];
         $postexcerpt = preg_replace ( "'<[^>]+>'U", "", $postexcerpt);
         $postexcerpt = string_limit_words($postexcerpt,15);
 
+        if (!has_post_thumbnail($postid)) {
+                continue;
+        }
+        
+        if (++$displayedPosts > $limit) break;
+        
         $largeimage = get_the_post_thumbnail( $postid, array(400, 250));
 ?>                      
         <div id="fragment-<?php echo $recent["ID"] ?>" class="ui-tabs-panel" >
