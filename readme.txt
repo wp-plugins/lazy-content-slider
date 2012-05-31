@@ -65,7 +65,7 @@ fixing svn
 = 1.3.2 =
 forgot to add dark style
 = 1.3.3 =
-forgot to add dark style
+commiting files
 
 
 
@@ -79,5 +79,5 @@ fixing svn
 = 1.3.2 =
 forgot to add dark style
 = 1.3.3 =
-forgot to add dark style
+commiting files
 
