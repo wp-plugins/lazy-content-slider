@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QI
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
 Tested up to: 3.3.2
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,7 +50,7 @@ simply upload the zip file within your wordpress installation.
 Go to http://mysqlhow2.com to see it in action
 
 == Frequently Asked Questions ==
-Just want to give shout out to Tim Garrison who helped with my looping and
+Just want to give shout out to Tim Garrison [http://www.skudd.com/] who helped with my looping and
 webdeveloperplus with the great tutorial on the slider using jquery.
 
 == Upgrade Notice ==
@@ -70,6 +70,9 @@ commiting files
 Removed font-family from css
 = 2.1 =
 Added Excerpt to div.info
+= 2.2 =
+Refactored to not show the div if no thumbnail-enabled posts are found -
+tgarrison
 
 
 
@@ -88,3 +91,7 @@ commiting files
 Removed font-family from css
 = 2.1 =
 Added Excerpt to div.info
+= 2.2 =
+Refactored to not show the div if no thumbnail-enabled posts are found -
+tgarrison
+
