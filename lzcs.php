@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 1.1                                                                                                                                                                        
+Version: 1.3
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -25,7 +25,8 @@ Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)
 
 add_action('admin_menu', 'lzcs_add_admin_menu');
 add_action('wp_enqueue_scripts', 'add_jscss');
-add_action('init', 'lzcs_init');
+register_activation_hook(__FILE__, 'lzcs_init');
+register_deactivation_hook(__FILE__, 'lzcs_deactivate');
 
 //set up lzcs plugin
 function add_jscss() {
@@ -35,9 +36,16 @@ function add_jscss() {
     wp_deregister_script( 'jquery-ui' );
     wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js');
     wp_enqueue_script( 'jquery-ui' );
+    $lzcscolor = get_option('lzcs_color');
+    if ($lzcscolor == "light" ) {
     wp_deregister_style( 'lazyslider');
     wp_register_style( 'lazyslider', plugins_url('/css/style.css', __FILE__) );
     wp_enqueue_style( 'lazyslider' );
+    } else {
+    wp_deregister_style( 'lazyslider');
+    wp_register_style( 'lazyslider', plugins_url('/css/style-dark.css', __FILE__) );
+    wp_enqueue_style( 'lazyslider' );
+    }
     wp_deregister_script( 'lazyslider');
     wp_register_script( 'lazyslider', plugins_url('/js/slider.js', __FILE__) );
     wp_enqueue_script( 'lazyslider' );
@@ -62,6 +70,11 @@ function lzcs_init() {
         update_option('lzcs_cat','lzcs');
     }
         add_filter('plugin_row_meta', 'lzcs_Plugin_Links',10,2);
+}
+
+function lzcs_deactivate() {
+    delete_option('lzcs_cat');
+    delete_option('lzcs_color');
 }
 
 function lzcs_admin_menu() {

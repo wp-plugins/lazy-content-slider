@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QI
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
 Tested up to: 3.3.2
-Stable tag: 1.0
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,12 +50,20 @@ simply upload the zip file within your wordpress installation.
 Go to http://mysqlhow2.com to see it in action
 
 == Frequently Asked Questions ==
-Just want to give shout out to Tim Garrison @ http://www.skudd.com who helped with my looping and
+Just want to give shout out to Tim Garrison who helped with my looping and
 webdeveloperplus with the great tutorial on the slider using jquery.
 
 == Upgrade Notice ==
-= 1.0 =
+= 1.1 =
 Initial Release
+= 1.2 =
+Added remove option from database when plugin deactivated.
+= 1.3 =
+Per request added a color option for darker themes
+
 
 == Changelog ==
-None
+= 1.2 =
+Added remove option from database when plugin deactivated.
+= 1.3 = 
+Per request added a color option for darker themes
