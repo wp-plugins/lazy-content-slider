@@ -19,10 +19,17 @@ Copyright 2010  Lee Thompson (email : sr.mysql.dba@gmail.com)
 
 function register_lzcssettings() {
         register_setting( 'lzcs_cat', 'lzcs' );
+	register_setting( 'lzcs_color', 'lzcs' );
 }
 
 function draw_form(){
 	$myvariable = get_option('lzcs_cat');
+	$lzcscolor = get_option('lzcs_color');
+	if ($lzcscolor == "dark"){
+	$selected = "checked";
+	}else{
+	$selected_default = "checked";
+	}
 ?>
 <div class="wrap">
 <h2>Lazy Content Slider Options</h2>
@@ -34,9 +41,18 @@ What category do you want to use.<br>
         <th scope="row">Current Category</th>
 	<th scope="row"><?php $catid = get_option('lzcs_cat'); echo get_cat_name( $catid )?> </th>
 	<tr><td>Select new category</td></tr><tr>
-        <td><?php wp_dropdown_categories(array('hide_empty' => 0, 'name' => 'lzcs', 'hierarchical' => true, 'echo' => 1)); ?>
+        <td><?php wp_dropdown_categories(array('hide_empty' => 0, 'name' => 'lzcs', 'hierarchical' => true, 'echo' => 1, 'selected' => 0)); ?>
 	</td>
         </tr>
+	<tr>
+	  <td>Select Color</td>
+	</tr>
+	  <td>
+		<Input type = 'Radio' Name ='lzcs_color' value= 'light' <?php echo $selected_default ?>> Light
+
+		<Input type = 'Radio' Name ='lzcs_color' value= 'dark' <?php echo $selected ?>> Dark
+	<tr>
+	
     </table>
 
     <p class="submit">
@@ -67,9 +83,11 @@ Donations are accepted for continued development of Lazy content Slider. Thank y
 
 if(isset($_POST['lzcs']))
 {
-        echo "<div class=\"updated\">Category has been updated.</div>";
+        echo "<div class=\"updated\">Settings have been updated.</div>";
         $myvariable=$_POST["lzcs"];
+	$lzcscolor=$_POST["lzcs_color"];
 	update_option('lzcs_cat', $myvariable);
+	update_option('lzcs_color', $lzcscolor);
 	draw_form();
 }else{
 	draw_form();

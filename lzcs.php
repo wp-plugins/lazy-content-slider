@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 1.2
+Version: 1.3
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -36,9 +36,16 @@ function add_jscss() {
     wp_deregister_script( 'jquery-ui' );
     wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js');
     wp_enqueue_script( 'jquery-ui' );
+    $lzcscolor = get_option('lzcs_color');
+    if ($lzcscolor == "light" ) {
     wp_deregister_style( 'lazyslider');
     wp_register_style( 'lazyslider', plugins_url('/css/style.css', __FILE__) );
     wp_enqueue_style( 'lazyslider' );
+    } else {
+    wp_deregister_style( 'lazyslider');
+    wp_register_style( 'lazyslider', plugins_url('/css/style-dark.css', __FILE__) );
+    wp_enqueue_style( 'lazyslider' );
+    }
     wp_deregister_script( 'lazyslider');
     wp_register_script( 'lazyslider', plugins_url('/js/slider.js', __FILE__) );
     wp_enqueue_script( 'lazyslider' );
@@ -67,6 +74,7 @@ function lzcs_init() {
 
 function lzcs_deactivate() {
     delete_option('lzcs_cat');
+    delete_option('lzcs_color');
 }
 
 function lzcs_admin_menu() {
