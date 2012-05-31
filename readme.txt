@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QI
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
 Tested up to: 3.3.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,9 @@ Added remove option from database when plugin deactivated.
 Per request added a color option for darker themes
 = 1.3.1 =
 fixing svn
+= 1.3.2 =
+forgot to add dark style
+
 
 == Changelog ==
 = 1.2 =
@@ -70,3 +73,5 @@ Added remove option from database when plugin deactivated.
 Per request added a color option for darker themes
 = 1.3.1 =
 fixing svn
+= 1.3.2 =
+forgot to add dark style
