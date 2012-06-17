@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QI
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
 Tested up to: 3.3.2
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,8 @@ Added Excerpt to div.info
 = 2.2 =
 Refactored to not show the div if no thumbnail-enabled posts are found -
 tgarrison
+= 2.3 =
+Added hover pause
 
 
 
@@ -94,4 +96,5 @@ Added Excerpt to div.info
 = 2.2 =
 Refactored to not show the div if no thumbnail-enabled posts are found -
 tgarrison
-
+= 2.3 =
+Added hover pause
