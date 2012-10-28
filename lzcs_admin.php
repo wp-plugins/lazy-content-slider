@@ -16,15 +16,16 @@ Copyright 2010  Lee Thompson (email : sr.mysql.dba@gmail.com)
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 function register_lzcssettings() {
         register_setting( 'lzcs_cat', 'lzcs' );
 	register_setting( 'lzcs_color', 'lzcs' );
+	register_setting( 'lzcs_count', 'lzcs' );
 }
 
 function draw_form(){
 	$myvariable = get_option('lzcs_cat');
 	$lzcscolor = get_option('lzcs_color');
+	$lzcscount = get_option('lzcs_count');
 	if ($lzcscolor == "dark"){
 	$selected = "checked";
 	}else{
@@ -38,21 +39,30 @@ What category do you want to use.<br>
 <?php settings_fields( 'lzcs_cat' ); ?>    
     <table class="form-table">
         <tr valign="top">
-        <th scope="row">Current Category</th>
-	<th scope="row"><?php $catid = get_option('lzcs_cat'); echo get_cat_name( $catid )?> </th>
-	<tr><td>Select new category</td></tr><tr>
-        <td><?php wp_dropdown_categories(array('hide_empty' => 0, 'name' => 'lzcs', 'hierarchical' => true, 'echo' => 1, 'selected' => 0)); ?>
+<?php $curcat = get_option('lzcs_cat'); ?>
+	<tr><td>Select new category</td>
+        <td><?php wp_dropdown_categories(array('hide_empty' => 0, 'name' => 'lzcs', 'hierarchical' => true, 'echo' => 1, 'selected' => $curcat)); ?>
 	</td>
         </tr>
 	<tr>
 	  <td>Select Color</td>
-	</tr>
 	  <td>
 		<Input type = 'Radio' Name ='lzcs_color' value= 'light' <?php echo $selected_default ?>> Light
 
 		<Input type = 'Radio' Name ='lzcs_color' value= 'dark' <?php echo $selected ?>> Dark
+
+	</tr>
 	<tr>
-	
+	  <td>How many articles to display</td>
+		<td>
+		<select name ="lzcs_count">
+  			<option value="1" <?php if (get_option('lzcs_count') == 1) { echo "selected = selected"; } ?>>One</option>
+			<option value="2" <?php if (get_option('lzcs_count') == 2) { echo "selected = selected"; } ?>>Two</option>
+			<option value="3" <?php if (get_option('lzcs_count') == 3) { echo "selected = selected"; } ?>>Three</option>
+			<option value="4" <?php if (get_option('lzcs_count') == 4) { echo "selected = selected"; } ?>>Four</option>
+			<option value="5" <?php if (get_option('lzcs_count') == 5) { echo "selected = selected"; } ?>>Five</option>
+		</select> 
+		</td>
     </table>
 
     <p class="submit">
@@ -61,6 +71,10 @@ What category do you want to use.<br>
 
 </form>
 </div>
+<div class="wrap">
+<?php if (function_exists("drawslider")){ drawslider(); }; ?>
+</div>
+<br><br>
 <div class="wrap">
 <strong>How to use</strong><br>
 
@@ -86,8 +100,10 @@ if(isset($_POST['lzcs']))
         echo "<div class=\"updated\">Settings have been updated.</div>";
         $myvariable=$_POST["lzcs"];
 	$lzcscolor=$_POST["lzcs_color"];
+	$lzcscount=$_POST["lzcs_count"];	
 	update_option('lzcs_cat', $myvariable);
 	update_option('lzcs_color', $lzcscolor);
+	update_option('lzcs_count', $lzcscount);
 	draw_form();
 }else{
 	draw_form();
