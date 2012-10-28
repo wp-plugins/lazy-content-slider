@@ -22,7 +22,7 @@ Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
+add_action( 'admin_enqueue_scripts', 'add_jscss' );
 add_action('admin_menu', 'lzcs_add_admin_menu');
 add_action('wp_enqueue_scripts', 'add_jscss');
 register_activation_hook(__FILE__, 'lzcs_init');
@@ -70,11 +70,12 @@ function lzcs_init() {
         update_option('lzcs_cat','lzcs');
     }
         add_filter('plugin_row_meta', 'lzcs_Plugin_Links',10,2);
+	add_option('lzcs_count');
 }
-
 function lzcs_deactivate() {
     delete_option('lzcs_cat');
     delete_option('lzcs_color');
+    delete_option('lzcs_count');
 }
 
 function lzcs_admin_menu() {
@@ -89,15 +90,16 @@ function string_limit_words($string, $word_limit)
   return implode(' ', $words);
 }
 
-function getDisplayPosts($limit = 4)
+
+function getDisplayPosts()
 {
+	$limit = get_option('lzcs_count')-1;
     $posts = get_option('lzcs_cat');
     $args = array('category' => $posts );
     $recent_posts = wp_get_recent_posts( $args );
 
     $output = array();
     foreach ($recent_posts as $post) {
-        setup_postdata($post);
         if (has_post_thumbnail($post['ID'])) {
             $output[] = $post;
         }
@@ -118,19 +120,12 @@ function drawslider() {
 
     echo "<div id=\"featured\" >";
     echo "<ul class=\"ui-tabs-nav\">";
-
     foreach( $recent_posts as $recent ){
-        setup_postdata($recent);
         $postid = $recent["ID"];
-
-        $thumbnail =  get_the_post_thumbnail( $postid, array(50, 50) );
-        
+        $thumbnail =  get_the_post_thumbnail($postid, array(50,50) );
 ?>
         <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<?php echo $recent["ID"] ?> ">
-            <a href="#fragment-<?php echo $recent["ID"]; ?>">
-                    <?php echo $thumbnail ?>
-                    <span><?php echo esc_attr($recent["post_title"]); ?></span>
-            </a>
+            <a href="#fragment-<?php echo $recent["ID"]; ?>"><?php echo $thumbnail ?><span><?php echo esc_attr($recent["post_title"]); ?></span></a>
         </li>
 <?php
     }
@@ -144,7 +139,7 @@ function drawslider() {
         $postexcerpt = preg_replace ( "'<[^>]+>'U", "", $postexcerpt);
         $postexcerpt = string_limit_words($postexcerpt,15);
 
-        $largeimage = get_the_post_thumbnail( $postid, array(400, 250));
+        $largeimage = get_the_post_thumbnail($postid, array(400,250));
 ?>                      
         <div id="fragment-<?php echo $recent["ID"] ?>" class="ui-tabs-panel" >
             <?php echo $largeimage ?>

@@ -3,8 +3,8 @@ Contributors: Lee Thompson
 Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QIeF1_D0J7w17CYOD1or-XWlEr8gYWg7yfLear6e5gtCcIE2bfbKu&dispatch=5885d80a13c0db1f8e263663d3faee8d0288a7fd2903afb85a5540fd44243d03
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
-Tested up to: 3.3.2
-Stable tag: 2.3
+Tested up to: 3.4.2
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,10 @@ appreciated.
 Please Donate for continued development:
 [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25LDNVSUTHKAJ "Donate to support continued development")
 
+Please rank this plugin at [Rate this plugin] http://wordpress.org/extend/plugins/lazy-content-slider/
+
+For [Support] http://wordpress.org/support/plugin/lazy-content-slider
+
 == Installation ==
 1. Upload this plugin to the `/wp-content/plugins/` directory and unzip it, or
 simply upload the zip file within your wordpress installation.
@@ -42,7 +46,7 @@ simply upload the zip file within your wordpress installation.
 3. Select the category you want to show( I recommend creatig a category and adding the posts there)
 
 4. Add the shortcut code [lazyslider] to any page or post.
-	4a. add this "<?php if (function_exists("drawslider")){ drawslider(); }; ?>"  to index.php or any page where you want to use the slider.
+	4a. add this `<?php if (function_exists("drawslider")){ drawslider(); }; ?>`  to index.php or any page where you want to use the slider.
 
 5. Make sure the post has a featured image set.
 
@@ -61,11 +65,11 @@ Added remove option from database when plugin deactivated.
 = 1.3 =
 Per request added a color option for darker themes
 = 1.3.1 =
-fixing svn
+Fixing svn
 = 1.3.2 =
-forgot to add dark style
+Forgot to add dark style
 = 1.3.3 =
-commiting files
+Commiting files
 = 2.0 =
 Removed font-family from css
 = 2.1 =
@@ -75,7 +79,10 @@ Refactored to not show the div if no thumbnail-enabled posts are found -
 tgarrison
 = 2.3 =
 Added hover pause
-
+= 2.4 =
+Added Preview
+Added Article count
+Cleaned up interface
 
 
 == Changelog ==
@@ -98,3 +105,7 @@ Refactored to not show the div if no thumbnail-enabled posts are found -
 tgarrison
 = 2.3 =
 Added hover pause
+= 2.4 =
+Added Preview
+Added Article count
+Cleaned up interface
