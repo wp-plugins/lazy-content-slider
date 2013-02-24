@@ -3,8 +3,8 @@ Contributors: Lee Thompson
 Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QIeF1_D0J7w17CYOD1or-XWlEr8gYWg7yfLear6e5gtCcIE2bfbKu&dispatch=5885d80a13c0db1f8e263663d3faee8d0288a7fd2903afb85a5540fd44243d03
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
-Tested up to: 3.4.2
-Stable tag: 2.4
+Tested up to: 3.5.1
+Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,7 +83,12 @@ Added hover pause
 Added Preview
 Added Article count
 Cleaned up interface
-
+= 2.5 =
+Fixed bug works with wordpress 3.5.1
+= 2.6 =
+Fixed Jquery version
+= 2.7 =
+Fixed version
 
 == Changelog ==
 = 1.2 =
@@ -109,3 +114,9 @@ Added hover pause
 Added Preview
 Added Article count
 Cleaned up interface
+= 2.5 =
+Upgrade js version to work with wordpress 3.5.1
+= 2.6 =
+Fix Jquery version
+= 2.7 =
+Fixed version
