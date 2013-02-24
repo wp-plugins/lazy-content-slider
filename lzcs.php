@@ -31,7 +31,7 @@ register_deactivation_hook(__FILE__, 'lzcs_deactivate');
 //set up lzcs plugin
 function add_jscss() {
     wp_deregister_script( 'jquery-min' );
-    wp_register_script( 'jquery-min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.2/jquery.min.js');
+    wp_register_script( 'jquery-min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
     wp_enqueue_script( 'jquery-min' );
     wp_deregister_script( 'jquery-ui' );
     wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js');
