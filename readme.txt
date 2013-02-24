@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QI
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
 Tested up to: 3.5.1
-Stable tag: 2.5
+Stable tag: 2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,7 +85,8 @@ Added Article count
 Cleaned up interface
 = 2.5 =
 Fixed bug works with wordpress 3.5.1
-
+= 2.6 =
+Fixed Jquery version
 
 == Changelog ==
 = 1.2 =
@@ -113,3 +114,5 @@ Added Article count
 Cleaned up interface
 = 2.5 =
 Upgrade js version to work with wordpress 3.5.1
+= 2.6 =
+Fix Jquery version
