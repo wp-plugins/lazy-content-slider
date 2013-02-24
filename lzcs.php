@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 2.4
+Version: 2.5
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -31,10 +31,10 @@ register_deactivation_hook(__FILE__, 'lzcs_deactivate');
 //set up lzcs plugin
 function add_jscss() {
     wp_deregister_script( 'jquery-min' );
-    wp_register_script( 'jquery-min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+    wp_register_script( 'jquery-min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.2/jquery.min.js');
     wp_enqueue_script( 'jquery-min' );
     wp_deregister_script( 'jquery-ui' );
-    wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js');
+    wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js');
     wp_enqueue_script( 'jquery-ui' );
     $lzcscolor = get_option('lzcs_color');
     if ($lzcscolor == "light" ) {
