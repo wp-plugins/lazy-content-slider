@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=39f9Z5QI
 Tags: slider,content,featured,rotator
 Requires at least: 2.9.2
 Tested up to: 3.5.1
-Stable tag: 3.2
+Stable tag: 3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,8 +91,10 @@ Fixed Jquery version
 Updated all code to be compliant of newer version of jQuery
 = 3.1 =
 Updated all code to be compliant of newer version of jQuery
-= 3.1 =
+= 3.2 =
 Small fix for arrows
+= 3.3 =
+Fixed auto rotation
 
 == Changelog ==
 = 1.2 =
@@ -126,5 +128,7 @@ Fix Jquery version
 Updated all code to be compliant of newer version of jQuery
 = 3.1 =
 Updated all code to be compliant of newer version of jQuery
-= 3.1 =
+= 3.2 =
 Small fix for arrows
+= 3.3 =
+Fixed auto rotation
