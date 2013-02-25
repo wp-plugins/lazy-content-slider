@@ -4,7 +4,7 @@ Plugin Name: Lazy Content Slider
 Plugin URI: http://mysqlhow2.com/                                                                                                                                                   
 Description: This is a content slider that shows 5 slides from a "Featured Category"                                                                                                
 Author: Lee Thompson                                                                                                                                                                
-Version: 2.7
+Version: 3.0
 Author URI: http://mysqlhow2.com                                                                                                                                                    
                                                                                                                                                                                     
 Copyright 2012  Lee Thompson (email : sr.mysql.dba@gmail.com)                                                                                                                       
@@ -33,6 +33,9 @@ function add_jscss() {
     wp_deregister_script( 'jquery-min' );
     wp_register_script( 'jquery-min', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
     wp_enqueue_script( 'jquery-min' );
+    wp_deregister_script( 'jquery-tab' );
+    wp_register_script( 'jquery-tab', plugins_url('/js/tabs.js', __FILE__) );
+    wp_enqueue_script( 'jquery-tab' );
     wp_deregister_script( 'jquery-ui' );
     wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js');
     wp_enqueue_script( 'jquery-ui' );
@@ -124,7 +127,7 @@ function drawslider() {
         $postid = $recent["ID"];
         $thumbnail =  get_the_post_thumbnail($postid, array(50,50) );
 ?>
-        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<?php echo $recent["ID"] ?> ">
+        <li class="ui-tabs-nav-item " id="nav-fragment-<?php echo $recent["ID"] ?> ">
             <a href="#fragment-<?php echo $recent["ID"]; ?>"><?php echo $thumbnail ?><span><?php echo esc_attr($recent["post_title"]); ?></span></a>
         </li>
 <?php
