@@ -40,12 +40,12 @@
 #featured li.ui-tabs-nav-item a:hover { 
 	background:#f2f2f2; 
 }
-#featured li.ui-tabs-selected{ 
-	background:url('../images/selected-item.gif') top left no-repeat;  
-}
-#featured ul.ui-tabs-nav li.ui-tabs-selected a{ 
-	background:#ccc; 
-}
+#featured li.ui-tabs-active{   
+	background:url('../images/selected-item.gif') top left no-repeat;    
+}  
+#featured ul.ui-tabs-nav li.ui-tabs-active a{   
+	background:#ccc;   
+}  
 #featured .ui-tabs-panel{ 
 	width:400px; height:250px; 
 	background:#999; 
