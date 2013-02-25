@@ -41,7 +41,7 @@
 	background:#f2f2f2; 
 }
 #featured li.ui-tabs-active{   
-	background:url('images/selected-item.gif') top left no-repeat;    
+	background:url('../images/selected-item.gif') top left no-repeat;    
 }  
 #featured ul.ui-tabs-nav li.ui-tabs-active a{   
 	background:#1c1c1c; 
