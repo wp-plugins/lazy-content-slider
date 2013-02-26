@@ -71,9 +71,6 @@ What category do you want to use.<br>
 
 </form>
 </div>
-<div class="wrap">
-<?php if (function_exists("drawslider")){ drawslider(); }; ?>
-</div>
 <br><br>
 <div class="wrap">
 <strong>How to use</strong><br>
